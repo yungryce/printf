@@ -10,43 +10,38 @@
 
 int _printf(const char *format, ...)
 {
-	int printed, count = 0;
+	int i, count = 0;
 	int (*ptr_select)(va_list) = NULL;
 	va_list args;
 
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
+	va_start(args, format);
+	if (!format || (format[0] == '%' && format[1] == '\0'))
+        	return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 
-	va_start(args, format);
-	for (; *format; format++)
+	for (i = 0; format[i]; i++)
 	{
 		if (*format == '%')
 		{
-			format++;
-			if (*format < ' ' || *format > '~')
+			ptr_select = selector(format[i + 1]);
+			if (format[i + 1] == '\0')
+				return (-1);
+			else if (ptr_select == NULL)
 			{
-				count += _putchar('%') + _putchar(*format);
+				count += _putchar(format[i]) + _putchar(format[i + 1]);
+				i++;
 				continue;
-			}
-
-			ptr_select = selector(format);
-			if (ptr_select)
-			{
-				printed = ptr_select(args);
-				count += (printed < 0) ? (va_end(args), -1) : printed;
 			}
 			else
 			{
-				count += _putchar('%');
-				count += _putchar(*format);
+				count += selector(ptr_select)(args);
+				i++;
+				continue;
 			}
 		}
-		else
-		{
-			count += _putchar(*format);
-		}
+		putchar(format[i]);
+		count++;
 	}
 	va_end(args);
 	return (count);
