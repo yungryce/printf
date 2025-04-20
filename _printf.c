@@ -11,6 +11,7 @@
 int _printf(const char *format, ...)
 {
 	unsigned int i = 0;
+	int printed_chars = 0;
 
 	va_list args;
 
@@ -26,31 +27,47 @@ int _printf(const char *format, ...)
 
 	size_t count = sizeof(funcs) / sizeof(funcs[0]);
 	va_start(args, format);
+
+	if (!format)
+		return (-1);
+
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			for (i = 0; i < count; i++)
-			{
-				if (*format == *(funcs[i].c))
-				{
-					funcs[i].f(args);
-					break;
-				}
-			}
-			if (i == count)
+			if (*format == '\0')
+				return (-1);
+			if (*format == '%')
 			{
 				_putchar('%');
-				_putchar(*format);
+				printed_chars++;
+			}
+			else
+			{
+				for (i = 0; i < count; i++)
+				{
+					if (*format == *(funcs[i].c))
+					{
+						printed_chars += funcs[i].f(args);
+						break;
+					}
+				}
+				if (i == count)
+				{
+					_putchar('%');
+					_putchar(*format);
+					printed_chars += 2;
+				}
 			}
 		}
 		else
 		{
 			_putchar(*format);
+			printed_chars++;
 		}
 		format++;
 	}
 	va_end(args);
-	return (*format);
+	return (printed_chars);
 }
