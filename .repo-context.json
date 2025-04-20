@@ -1,0 +1,40 @@
+{
+  "project_identity": {
+    "type": "education",
+    "scope": "repository",
+    "is_independent": true,
+    "name": "printf",
+    "description": "Custom implementation of the printf function in C"
+  },
+  "tech_stack": {
+    "primary": ["C"],
+    "secondary": ["GNU Make", "Bash"],
+    "key_libraries": ["Standard C Library"]
+  },
+  "skill_manifest": {
+    "technical": [
+      "Variadic Functions",
+      "Function Pointers",
+      "Memory Management",
+      "String Manipulation",
+      "Modular Programming",
+      "Low-level I/O"
+    ],
+    "domain": [
+      "Systems Programming",
+      "C Standard Library Implementation"
+    ]
+  },
+  "educational_context": {
+    "course": "ALX Software Engineering Program",
+    "project_type": "Core Curriculum",
+    "difficulty_level": "Intermediate",
+    "estimated_hours": 40,
+    "learning_objectives": [
+      "Understand variadic functions in C",
+      "Implement complex string formatting logic",
+      "Practice modular code organization",
+      "Learn how standard library functions work internally"
+    ]
+  }
+}

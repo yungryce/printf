@@ -10,9 +10,22 @@
 
 int _printf(const char *format, ...)
 {
-	int i, count = 0;
-	int (*ptr_select)(va_list) = NULL;
+	unsigned int i = 0;
+	int printed_chars = 0;
+
 	va_list args;
+
+	arr_printf funcs[] = {
+		{"c", print_char}, {"s", print_string},
+		{"d", print_decimal}, {"i", print_int},
+		{"b", print_binary},
+		{"u", print_unsigned}, {"o", print_octal},
+		{"x", print_hex_lower}, {"X", print_hex_upper},
+		{"S", print_ascii_hex},
+		{"p", print_pointer}
+	};
+
+	size_t count = sizeof(funcs) / sizeof(funcs[0]);
 
 	va_start(args, format);
 	if (!format || (format[0] == '%' && format[1] == '\0'))
@@ -20,29 +33,46 @@ int _printf(const char *format, ...)
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 
-	for (i = 0; format[i]; i++)
+	if (!format)
+		return (-1);
+
+	while (*format)
 	{
 		if (*format == '%')
 		{
-			ptr_select = selector(format[i + 1]);
-			if (format[i + 1] == '\0')
+			format++;
+			if (*format == '\0')
 				return (-1);
-			else if (ptr_select == NULL)
+			if (*format == '%')
 			{
-				count += _putchar(format[i]) + _putchar(format[i + 1]);
-				i++;
-				continue;
+				_putchar('%');
+				printed_chars++;
 			}
 			else
 			{
-				count += selector(ptr_select)(args);
-				i++;
-				continue;
+				for (i = 0; i < count; i++)
+				{
+					if (*format == *(funcs[i].c))
+					{
+						printed_chars += funcs[i].f(args);
+						break;
+					}
+				}
+				if (i == count)
+				{
+					_putchar('%');
+					_putchar(*format);
+					printed_chars += 2;
+				}
 			}
 		}
-		putchar(format[i]);
-		count++;
+		else
+		{
+			_putchar(*format);
+			printed_chars++;
+		}
+		format++;
 	}
 	va_end(args);
-	return (count);
+	return (printed_chars);
 }
