@@ -1,40 +1,103 @@
 {
   "project_identity": {
-    "type": "education",
-    "scope": "repository",
-    "is_independent": true,
     "name": "printf",
-    "description": "Custom implementation of the printf function in C"
+    "type": "educational",
+    "scope": "systems",
+    "is_independent": true,
+    "version": "1.0.0",
+    "description": "A comprehensive custom implementation of the printf function in C, demonstrating advanced variadic function usage, format specifier parsing, and modular code architecture with support for multiple data types and number base conversions",
+    "curriculum_stage": "intermediate",
+    "related_projects": ["simple_shell", "binary_trees", "monty"]
   },
   "tech_stack": {
-    "primary": ["C"],
-    "secondary": ["GNU Make", "Bash"],
-    "key_libraries": ["Standard C Library"]
+    "primary_language": "c",
+    "languages": ["c"],
+    "frameworks_libraries": [],
+    "tools": ["gcc", "make", "valgrind", "gdb"],
+    "paradigms": ["procedural", "systems_programming", "modular_design"],
+    "concepts": ["variadic_functions", "format_specifiers", "string_processing", "base_conversion", "function_pointers"]
   },
   "skill_manifest": {
-    "technical": [
-      "Variadic Functions",
-      "Function Pointers",
-      "Memory Management",
-      "String Manipulation",
-      "Modular Programming",
-      "Low-level I/O"
+    "technical_skills": [
+      "Variadic Functions Implementation",
+      "Function Pointer Arrays and Dispatch Tables",
+      "Format String Parsing and Processing",
+      "Base Conversion Algorithms (Binary, Octal, Hexadecimal)",
+      "String Manipulation and Character Processing",
+      "Memory Management for Dynamic Output",
+      "Modular Code Architecture and Organization",
+      "Low-level Input/Output Operations",
+      "Error Handling and Edge Case Management",
+      "Recursive Algorithm Implementation",
+      "Standard Library Function Recreation",
+      "Type-safe Argument Processing"
     ],
-    "domain": [
+    "domain_skills": [
       "Systems Programming",
-      "C Standard Library Implementation"
+      "C Standard Library Implementation",
+      "Printf Function Internals",
+      "Output Formatting Systems",
+      "Number System Conversions",
+      "ASCII and Character Encoding",
+      "Buffer Management",
+      "Cross-platform Compatibility"
+    ],
+    "soft_skills": [
+      "Modular Design Thinking",
+      "Problem Decomposition",
+      "Code Documentation",
+      "Test-driven Development",
+      "Debugging and Troubleshooting"
     ]
   },
   "educational_context": {
-    "course": "ALX Software Engineering Program",
-    "project_type": "Core Curriculum",
-    "difficulty_level": "Intermediate",
+    "institution": "ALX Software Engineering Program",
+    "program": "Full Stack Software Engineering",
+    "level": "intermediate",
+    "duration_weeks": 2,
     "estimated_hours": 40,
+    "prerequisite_knowledge": [
+      "C Programming Fundamentals",
+      "Pointers and Memory Management",
+      "Function Implementation",
+      "String Manipulation",
+      "Basic Data Structures"
+    ],
     "learning_objectives": [
-      "Understand variadic functions in C",
-      "Implement complex string formatting logic",
-      "Practice modular code organization",
-      "Learn how standard library functions work internally"
+      "Master variadic function implementation in C",
+      "Understand printf function internals and format specifier processing",
+      "Implement efficient string parsing and manipulation algorithms",
+      "Create modular code architecture with function pointer dispatch",
+      "Develop base conversion algorithms for multiple number systems",
+      "Practice advanced memory management and buffer handling",
+      "Learn standard library function recreation techniques",
+      "Apply recursive algorithms for number processing"
+    ],
+    "assessment_criteria": [
+      "Code compilation without warnings",
+      "Proper handling of all required format specifiers",
+      "Memory leak prevention and efficient resource usage",
+      "Modular code organization and documentation",
+      "Edge case handling and error management",
+      "Performance optimization and algorithm efficiency"
+    ]
+  },
+  "project_context": {
+    "complexity_level": "intermediate",
+    "estimated_completion_time": "2-3 weeks",
+    "key_challenges": [
+      "Implementing variadic function argument processing",
+      "Creating efficient format string parsing logic",
+      "Handling multiple data types and conversion specifiers",
+      "Managing memory allocation for dynamic output",
+      "Ensuring cross-platform compatibility"
+    ],
+    "success_metrics": [
+      "All format specifiers work correctly",
+      "No memory leaks or buffer overflows",
+      "Code passes all test cases",
+      "Modular and maintainable code structure",
+      "Proper documentation and commenting"
     ]
   }
 }
